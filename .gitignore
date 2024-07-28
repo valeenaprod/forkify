@@ -2,6 +2,9 @@
 .import/
 .godot/
 
+# Ignore all assets
+/assets/*
+
 # Cache and temporary files
 *.log
 *.tmp
