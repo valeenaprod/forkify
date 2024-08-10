@@ -1,0 +1,134 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpewiatlhhw0w"]
+
+[ext_resource type="Script" path="res://Scripts/Manager/UIManager.cs" id="1_ow23k"]
+
+[node name="UI_Manager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ow23k")
+metadata/_edit_lock_ = true
+
+[node name="UI_MainMenu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button_NewGame" type="Button" parent="UI_MainMenu"]
+layout_mode = 2
+offset_left = 208.0
+offset_top = 148.0
+offset_right = 592.0
+offset_bottom = 212.0
+action_mode = 0
+text = "New Game"
+
+[node name="Button_LoadGame" type="Button" parent="UI_MainMenu"]
+layout_mode = 2
+offset_left = 208.0
+offset_top = 244.0
+offset_right = 592.0
+offset_bottom = 308.0
+action_mode = 0
+text = "Load Game"
+
+[node name="Button_QuitGame" type="Button" parent="UI_MainMenu"]
+layout_mode = 2
+offset_left = 208.0
+offset_top = 340.0
+offset_right = 592.0
+offset_bottom = 404.0
+action_mode = 0
+text = "Quit"
+
+[node name="UI_CreateNewGame" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 24.0
+offset_right = 800.0
+offset_bottom = 664.0
+
+[node name="UI_CreateNewGame_Welcome" type="Label" parent="UI_CreateNewGame"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 72.0
+offset_right = 648.0
+offset_bottom = 127.0
+text = "WELCOME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="UI_CreateNewGame_AskCharacterName" type="Label" parent="UI_CreateNewGame"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 176.0
+offset_right = 648.0
+offset_bottom = 231.0
+text = "ASK_CHARACTER_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="UI_CreateNewGame_AskRestaurantName" type="Label" parent="UI_CreateNewGame"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 336.0
+offset_right = 648.0
+offset_bottom = 391.0
+text = "ASK_RESTAURANT_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Input_CreateNewGame_CharacterName" type="LineEdit" parent="UI_CreateNewGame"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 416.0
+offset_right = 560.0
+offset_bottom = 447.0
+placeholder_text = "Restaurant Name"
+
+[node name="Input_CreateNewGame_RestaurantName" type="LineEdit" parent="UI_CreateNewGame"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 280.0
+offset_right = 560.0
+offset_bottom = 311.0
+placeholder_text = "Character Name"
+
+[node name="Button_CreateNewGame_Submit" type="Button" parent="UI_CreateNewGame"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 480.0
+offset_right = 512.0
+offset_bottom = 528.0
+text = "SUBMIT"
+
+[node name="Error_CharacterName_Empty" type="Label" parent="UI_CreateNewGame"]
+visible = false
+layout_mode = 0
+offset_left = 352.0
+offset_top = 248.0
+offset_right = 552.0
+offset_bottom = 271.0
+text = "EMPTY WARNING"
+
+[node name="Error_RestaurantName_Empty" type="Label" parent="UI_CreateNewGame"]
+visible = false
+layout_mode = 0
+offset_left = 376.0
+offset_top = 391.0
+offset_right = 528.0
+offset_bottom = 414.0
+text = "EMPTY WARNING"
