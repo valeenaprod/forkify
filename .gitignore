@@ -4,6 +4,8 @@
 
 # Visual Studio files
 .vs/*
+*.csproj
+*.sln
 
 # Ignore all assets
 /assets/*
