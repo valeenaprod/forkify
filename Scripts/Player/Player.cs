@@ -12,8 +12,8 @@ public partial class Player : CharacterBody2D
     private AnimatedSprite2D _sprite;
     private bool _isNearNPC;
     private Area2D _interactionArea;
-    private Node _npc;
-    private Customer_Control _targetCustomer;
+    private Customer _target;
+    private UI_CustomerOrder _order;
     #endregion
 
     public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -80,9 +80,10 @@ public partial class Player : CharacterBody2D
     // When player interacts with an NPC
     private void InteractWithNPC(InputEvent @event)
     {
-        GD.Print($"Interacting with: {_npc.Name}");
-       // if(_targetCustomer.IsInteractable()) GD.Print("Is Interactable");
-        
+        GD.Print($"Interacting with: {_target.CustomerName}");
+        var scene = GD.Load<PackedScene>("res://Scenes//UI_CustomerOrder.tscn");
+        _order = scene.Instantiate<UI_CustomerOrder>();
+        GetTree().CurrentScene.AddChild(_order);
     }
 
     // When a body enters the InteractionArea
@@ -92,7 +93,7 @@ public partial class Player : CharacterBody2D
         {
             GD.Print("body entered");
             _isNearNPC = true;
-            _targetCustomer = (Customer_Control)body;
+            _target = (Customer)body.GetParent();
         }
     }
 
@@ -102,7 +103,7 @@ public partial class Player : CharacterBody2D
         {
             GD.Print("body exited");
             _isNearNPC = false;
-            _targetCustomer = null;
+            _target = null;
         }
     }
 }

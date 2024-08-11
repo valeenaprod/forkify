@@ -2,6 +2,9 @@
 .import/
 .godot/
 
+# Visual Studio files
+.vs/*
+
 # Ignore all assets
 /assets/*
 

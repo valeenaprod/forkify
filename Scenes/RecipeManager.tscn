@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpoo4v6wemnlt"]
+
+[ext_resource type="Script" path="res://Scripts/Recipes/RecipeManager.cs" id="1_4qy2f"]
+
+[node name="RecipeManager" type="Node"]
+script = ExtResource("1_4qy2f")

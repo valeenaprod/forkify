@@ -33,6 +33,8 @@ public partial class GameManager : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
+
+		// to reorganize
 		
 		// Load the scenes
 		_uiScene = GD.Load<PackedScene>("res://Scenes//UI_Scene.tscn");
@@ -42,14 +44,20 @@ public partial class GameManager : Node2D
 		_saveLoadManager = _saveLoadManagerScene.Instantiate<SaveLoadManager>();
 		AddChild(_saveLoadManager);
 
-		_uiManager = _uiScene.Instantiate<UIManager>();
+        // ui manager
+        _uiManager = _uiScene.Instantiate<UIManager>();
 		AddChild(_uiManager);
 		_uiMainMenu = _uiManager.GetNode<Panel>("UI_MainMenu");
 		_uiCreateNewGame = _uiManager.GetNode<Panel>("UI_CreateNewGame");
 		_uiMainMenu.Show();
+
+		// Signals for the main menu UI
         _uiMainMenu.GetNode<Button>("Button_NewGame").Pressed += CreateNewGame;
 		_uiMainMenu.GetNode<Button>("Button_LoadGame").Pressed += LoadGame;
 		//
+
+		SetNewCustomerTimer();
+
 		_customerTarget = new List<Vector2>();
 
 		_customerTarget.Add(new Vector2(56, 128));
@@ -76,6 +84,8 @@ public partial class GameManager : Node2D
         _uiMainMenu.Hide();
     }
 
+
+	// creates a new timer for spawning a new customer
 	private async void SetNewCustomerTimer()
 	{
 		float randomTime = (float) _random.NextDouble() * 4.0f + 1.0f;
@@ -83,6 +93,8 @@ public partial class GameManager : Node2D
 		SetNewCustomerTimerTimeout();
 	}
 
+
+	// when the timer for a new customer expires
 	private void SetNewCustomerTimerTimeout()
 	{
 		// if there's already a customer in the store
@@ -95,7 +107,11 @@ public partial class GameManager : Node2D
         _customer.Type = 0; // type = regular
         _customer.State = 0; // state = entering
         _customer.CustomerName = name;
-		AddChild(_customer);
+        _customer.GetNode<CharacterBody2D>("CustomerPhysics").Position = new Vector2(160, 213);
+        AddChild(_customer);
+		GD.Print("New Customer! " + _customer.CustomerName);
+		SetNewOrderTimer();
+
 
     }
 
@@ -109,6 +125,7 @@ public partial class GameManager : Node2D
 	private void SetNewOrderTimerTimeout()
 	{
 		_customer.GetNode<Label>("UI_OrderAvailable").Show();
+		GD.Print("Order Available!");
 	}
 
 	#region SaveSystem

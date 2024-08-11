@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://ct21mdgpq76ng"]
+[gd_scene load_steps=31 format=3 uid="uid://ct21mdgpq76ng"]
 
 [ext_resource type="Script" path="res://Scripts/Customer/Customer.cs" id="1_1nldr"]
+[ext_resource type="Script" path="res://Scripts/Customer/Customer_Control.cs" id="2_lo6u5"]
 [ext_resource type="Texture2D" uid="uid://s0qh2pu5tv7v" path="res://Assets/Characters/Premade_Characters/Premade_Character_02.png" id="2_s48bd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhano"]
@@ -205,6 +206,7 @@ outline_color = Color(4.81307e-07, 0.716159, 0.815432, 1)
 script = ExtResource("1_1nldr")
 
 [node name="CustomerPhysics" type="CharacterBody2D" parent="."]
+script = ExtResource("2_lo6u5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerPhysics"]
 shape = SubResource("CapsuleShape2D_rhano")
@@ -216,7 +218,7 @@ animation = &"move_up"
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="CustomerPhysics"]
 path_postprocessing = 1
 
-[node name="UI_OrderAvailable" type="Label" parent="CustomerPhysics"]
+[node name="UI_OrderAvailable" type="Label" parent="."]
 visible = false
 offset_left = -1.0
 offset_top = -19.0

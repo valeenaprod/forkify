@@ -34,6 +34,7 @@ public partial class Customer_Control : CharacterBody2D
 		Vector2 nextPathPosition = _navAgent.GetNextPathPosition();
 
 		Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * _movementSpeed;
+		//GD.Print("Moving!");
 		MoveAndSlide();
 	}
 
@@ -42,5 +43,6 @@ public partial class Customer_Control : CharacterBody2D
 		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 
 		MovementTarget = _movementTargetPosition;
+		GD.Print("Target: " + _movementTargetPosition);
 	}
 }
